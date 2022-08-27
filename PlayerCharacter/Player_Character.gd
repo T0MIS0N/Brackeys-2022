@@ -5,10 +5,13 @@ export var gravity := 50.0
 
 var _velocity := Vector3.ZERO
 var _snap_vector := Vector3.DOWN
+var _key_array: Array = []
 
 onready var _spring_arm: SpringArm = $SpringArm
 onready var _model: Spatial = $Armature
 onready var _animation_player: AnimationPlayer = $AnimationPlayer
+
+signal transmit_keys(key_array)
 
 func _physics_process(delta):
 	var move_direction = Vector3.ZERO
@@ -38,3 +41,11 @@ func _physics_process(delta):
 	
 #func _process(delta):
 #	_spring_arm.translation = translation
+
+func _on_Key_key_collected(key_name):
+	_key_array.push_back(key_name)
+	print(_key_array)
+
+func _on_DoorHitbox_body_entered(body):
+	emit_signal("transmit_keys",_key_array)
+
