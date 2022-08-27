@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World/Rooms/4Way.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Rooms/Hallway_Short.tscn" type="PackedScene" id=2]
@@ -12,11 +12,13 @@
 [ext_resource path="res://World/Rooms/2Way_Across_Long.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Rooms/Hallway_L.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Rooms/Hallway.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/LockedDoor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://World/Key.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Environment" id=3]
 background_mode = 1
 ambient_light_color = Color( 0.423529, 0.423529, 0.423529, 1 )
-ambient_light_energy = 3.8
+ambient_light_energy = 0.01
 
 [node name="World" type="Node"]
 
@@ -222,3 +224,15 @@ transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e
 
 [node name="Hallway18" parent="World/Center" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 30, 0, 636 )
+
+[node name="LockedDoor" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 29 )
+
+[node name="LockedDoor2" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29 )
+
+[node name="LockedDoor3" parent="World" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29, 1, 0 )
+
+[node name="Key" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 18 )
