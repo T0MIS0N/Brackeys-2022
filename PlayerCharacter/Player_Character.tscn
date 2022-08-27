@@ -347,6 +347,7 @@ height = 2.21412
 
 [node name="Player_Character" type="KinematicBody"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Armature" type="Spatial" parent="."]

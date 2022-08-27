@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://World/Wood.png" type="Texture" id=1]
+[ext_resource path="res://World/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Floor.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 2 )
+size = Vector3( 12, 2, 36 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 2, 6, 36 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 2, 6, 36 )
+
+[node name="Hallway" type="Spatial"]
+
+[node name="Floor" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape" parent="Floor" index="0"]
+transform = Transform( 6, 0, 0, 0, 1, 0, 0, 0, 18, 0, 0, 0 )
+
+[node name="MeshInstance" parent="Floor" index="1"]
+mesh = SubResource( 3 )
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0 )
+
+[node name="CollisionShape" parent="Wall" index="0"]
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 18, 0, 3, 0 )
+
+[node name="MeshInstance" parent="Wall" index="1"]
+mesh = SubResource( 4 )
+
+[node name="Wall2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0 )
+
+[node name="CollisionShape" parent="Wall2" index="0"]
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 18, 0, 3, 0 )
+
+[node name="MeshInstance" parent="Wall2" index="1"]
+mesh = SubResource( 5 )
+
+[editable path="Floor"]
+[editable path="Wall"]
+[editable path="Wall2"]
