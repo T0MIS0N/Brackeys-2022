@@ -39,3 +39,36 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+
+
+Iletzy
+
+This game uses "Ghostmonster sounds" which is created by Iletzy, and is licensed under CC0 1.0 (Public Domain)
+
+These sounds can be found at
+https://opengameart.org/content/ghostmonster-sounds
+
+Iletzy's OpenGameArt profile can be viewed at
+https://opengameart.org/users/iletzy
+
+Information on the CC0 1.0 License can be found at
+https://creativecommons.org/publicdomain/zero/1.0/
+
+
+
+Kenney.nl
+
+This game uses sounds from "50 RPG Sound Effects" which is created by Kenney.nl, and is licensed under CC0 1.0 (Public Domain)
+
+These sounds can be found at
+https://opengameart.org/content/50-rpg-sound-effects
+
+Kenney.nl's OpenGameArt profile can be viewed at
+https://opengameart.org/users/kenney
+
+Kenney.nl's Website can be found at
+www.kenney.nl
+
+Information on the CC0 1.0 License can be found at
+https://creativecommons.org/publicdomain/zero/1.0/

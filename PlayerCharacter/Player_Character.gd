@@ -10,8 +10,10 @@ var _key_array: Array = []
 onready var _spring_arm: SpringArm = $SpringArm
 onready var _model: Spatial = $Armature
 onready var _animation_player: AnimationPlayer = $AnimationPlayer
+onready var _candle: OmniLight = $Armature/Skeleton/Candle/OmniLight
 
 signal transmit_keys(key_array)
+signal emit_noise(location)
 
 func _physics_process(delta):
 	var move_direction = Vector3.ZERO
@@ -49,3 +51,16 @@ func _on_Key_key_collected(key_name):
 func _on_DoorHitbox_body_entered(body):
 	emit_signal("transmit_keys",_key_array)
 
+func change_light_range(candle_range):
+	_candle.omni_range = candle_range
+
+func _on_Enemy_candle_change(candle_range):
+	change_light_range(candle_range)
+
+func _on_ObjectCollisionBox_body_entered(body):
+	print("Noise made")
+	emit_signal("emit_noise",body.translation)
+	
+func play_step_sound():
+	if(!$FootStep.playing):
+		$FootStep.play()

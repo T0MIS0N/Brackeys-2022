@@ -28,8 +28,7 @@ margin_top = 66.0
 margin_right = 537.0
 margin_bottom = 102.0
 theme = SubResource( 2 )
-text = "Mansion"
-align = 1
+text = "You have escaped the Mansion"
 
 [node name="Button" type="Button" parent="."]
 margin_left = 266.0
@@ -37,7 +36,7 @@ margin_top = 225.0
 margin_right = 389.0
 margin_bottom = 272.0
 theme = SubResource( 4 )
-text = "Start"
+text = "Restart"
 
 [node name="Button2" type="Button" parent="."]
 margin_left = 266.0

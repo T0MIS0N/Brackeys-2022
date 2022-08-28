@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ghostmonster_sounds.mp3-0d03814723e8fc47279866d2b1f82e57.mp3str"
+
+[deps]
+
+source_file="res://Enemy/Ghostmonster_sounds.mp3"
+dest_files=[ "res://.import/Ghostmonster_sounds.mp3-0d03814723e8fc47279866d2b1f82e57.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

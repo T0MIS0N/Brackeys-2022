@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Win.gd" type="Script" id=1]
 [ext_resource path="res://Arial.tres" type="DynamicFontData" id=2]
@@ -10,11 +10,18 @@ font_data = ExtResource( 2 )
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=3]
 size = 25
 font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=6]
 default_font = SubResource( 5 )
 
 [node name="Control" type="Control"]
@@ -28,8 +35,7 @@ margin_top = 66.0
 margin_right = 537.0
 margin_bottom = 102.0
 theme = SubResource( 2 )
-text = "Mansion"
-align = 1
+text = "You failed to escape the Mansion"
 
 [node name="Button" type="Button" parent="."]
 margin_left = 266.0
@@ -37,14 +43,14 @@ margin_top = 225.0
 margin_right = 389.0
 margin_bottom = 272.0
 theme = SubResource( 4 )
-text = "Start"
+text = "Try Again"
 
 [node name="Button2" type="Button" parent="."]
 margin_left = 266.0
 margin_top = 285.0
 margin_right = 389.0
 margin_bottom = 332.0
-theme = SubResource( 4 )
+theme = SubResource( 6 )
 text = "Quit"
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

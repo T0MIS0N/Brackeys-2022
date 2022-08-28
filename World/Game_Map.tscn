@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://World/Rooms/4Way.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Rooms/Hallway_Short.tscn" type="PackedScene" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://World/LockedDoor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Key.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/Rooms/Porch.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/Interactables/Plate.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Environment" id=3]
 background_mode = 1
@@ -27,214 +29,219 @@ ambient_light_energy = 0.01
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341977, 1.87357, 0.945644 )
 speed = 15.0
 
+[node name="Enemy" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96.349, 6, 192.532 )
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
 
 [node name="World" type="Spatial" parent="."]
 
-[node name="Entrance" parent="World" instance=ExtResource( 1 )]
+[node name="Structure" type="Spatial" parent="World"]
 
-[node name="LeftBranch" type="Spatial" parent="World"]
+[node name="Entrance" parent="World/Structure" instance=ExtResource( 1 )]
 
-[node name="Hallway2" parent="World/LeftBranch" instance=ExtResource( 12 )]
+[node name="LeftBranch" type="Spatial" parent="World/Structure"]
+
+[node name="Hallway2" parent="World/Structure/LeftBranch" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48, 0, 0 )
 
-[node name="3Way" parent="World/LeftBranch" instance=ExtResource( 8 )]
+[node name="3Way" parent="World/Structure/LeftBranch" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -96, 0, 0 )
 
-[node name="Hallway4" parent="World/LeftBranch" instance=ExtResource( 12 )]
+[node name="Hallway4" parent="World/Structure/LeftBranch" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -144, 0, 0 )
 
-[node name="2Way-Ad" parent="World/LeftBranch" instance=ExtResource( 7 )]
+[node name="2Way-Ad" parent="World/Structure/LeftBranch" instance=ExtResource( 7 )]
 transform = Transform( -1, -3.55271e-15, -8.74228e-08, 3.55271e-15, 1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, -192, 0, 0 )
 
-[node name="2Way-Ad2" parent="World/LeftBranch" instance=ExtResource( 7 )]
+[node name="2Way-Ad2" parent="World/Structure/LeftBranch" instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -192, 0, 96 )
 
-[node name="Hallway5" parent="World/LeftBranch" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -191.892, 0, 48 )
+[node name="Hallway5" parent="World/Structure/LeftBranch" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, 48 )
 
-[node name="Hallway6" parent="World/LeftBranch" instance=ExtResource( 12 )]
+[node name="Hallway6" parent="World/Structure/LeftBranch" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, 48 )
 
-[node name="Hallway7" parent="World/LeftBranch" instance=ExtResource( 12 )]
+[node name="Hallway7" parent="World/Structure/LeftBranch" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -144, 0, 96 )
 
-[node name="3Way2" parent="World/LeftBranch" instance=ExtResource( 8 )]
+[node name="3Way2" parent="World/Structure/LeftBranch" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, 96 )
 
-[node name="2Way-Ad3" parent="World/LeftBranch" instance=ExtResource( 7 )]
+[node name="2Way-Ad3" parent="World/Structure/LeftBranch" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, 192 )
 
-[node name="Hallway8" parent="World/LeftBranch" instance=ExtResource( 12 )]
+[node name="Hallway8" parent="World/Structure/LeftBranch" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, 144 )
 
-[node name="Hallway9" parent="World/LeftBranch" instance=ExtResource( 12 )]
+[node name="Hallway9" parent="World/Structure/LeftBranch" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -144, 0, 192 )
 
-[node name="2Way-Ad4" parent="World/LeftBranch" instance=ExtResource( 7 )]
+[node name="2Way-Ad4" parent="World/Structure/LeftBranch" instance=ExtResource( 7 )]
 transform = Transform( -1, 3.82137e-15, 8.74228e-08, -3.82137e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, -192, 0, 192 )
 
-[node name="Hallway10" parent="World/LeftBranch" instance=ExtResource( 12 )]
+[node name="Hallway10" parent="World/Structure/LeftBranch" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, 240 )
 
-[node name="1Way" parent="World/LeftBranch" instance=ExtResource( 5 )]
+[node name="1Way" parent="World/Structure/LeftBranch" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, 288 )
 
-[node name="RightBranch" type="Spatial" parent="World"]
+[node name="RightBranch" type="Spatial" parent="World/Structure"]
 
-[node name="Hallway3" parent="World/RightBranch" instance=ExtResource( 12 )]
+[node name="Hallway3" parent="World/Structure/RightBranch" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 48, 0, 0 )
 
-[node name="2Way_Ac" parent="World/RightBranch" instance=ExtResource( 6 )]
+[node name="2Way_Ac" parent="World/Structure/RightBranch" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 96, 0, 0 )
 
-[node name="Hallway" parent="World/RightBranch" instance=ExtResource( 12 )]
+[node name="Hallway" parent="World/Structure/RightBranch" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 144, 0, 0 )
 
-[node name="2Way-Ad" parent="World/RightBranch" instance=ExtResource( 7 )]
+[node name="2Way-Ad" parent="World/Structure/RightBranch" instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 192, 0, 0 )
 
-[node name="3Way" parent="World/RightBranch" instance=ExtResource( 8 )]
+[node name="3Way" parent="World/Structure/RightBranch" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 96 )
 
-[node name="Hallway2" parent="World/RightBranch" instance=ExtResource( 12 )]
+[node name="Hallway2" parent="World/Structure/RightBranch" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 48 )
 
-[node name="2Way-Ad2" parent="World/RightBranch" instance=ExtResource( 7 )]
+[node name="2Way-Ad2" parent="World/Structure/RightBranch" instance=ExtResource( 7 )]
 transform = Transform( -1, 3.82137e-15, 8.74228e-08, -3.82137e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 96, 0, 96 )
 
-[node name="Hallway4" parent="World/RightBranch" instance=ExtResource( 12 )]
+[node name="Hallway4" parent="World/Structure/RightBranch" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 144, 0, 96 )
 
-[node name="3Way2" parent="World/RightBranch" instance=ExtResource( 8 )]
+[node name="3Way2" parent="World/Structure/RightBranch" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 144, 0, 192 )
 
-[node name="Hallway5" parent="World/RightBranch" instance=ExtResource( 12 )]
+[node name="Hallway5" parent="World/Structure/RightBranch" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, 144 )
 
-[node name="Hallway6" parent="World/RightBranch" instance=ExtResource( 12 )]
+[node name="Hallway6" parent="World/Structure/RightBranch" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 144 )
 
-[node name="Hallway8" parent="World/RightBranch" instance=ExtResource( 11 )]
+[node name="Hallway8" parent="World/Structure/RightBranch" instance=ExtResource( 11 )]
 transform = Transform( -1, 3.82137e-15, 8.74228e-08, -3.82137e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 192, 0, 180 )
 
-[node name="Hallway9" parent="World/RightBranch" instance=ExtResource( 9 )]
+[node name="Hallway9" parent="World/Structure/RightBranch" instance=ExtResource( 9 )]
 transform = Transform( -1, 3.82137e-15, 8.74228e-08, -3.82137e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 96, 0, 180 )
 
-[node name="Hallway7" parent="World/RightBranch" instance=ExtResource( 11 )]
+[node name="Hallway7" parent="World/Structure/RightBranch" instance=ExtResource( 11 )]
 transform = Transform( -1, 3.82137e-15, 8.74228e-08, -3.82137e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 144, 0, 240 )
 
-[node name="Hallway10" parent="World/RightBranch" instance=ExtResource( 11 )]
+[node name="Hallway10" parent="World/Structure/RightBranch" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 0, 264 )
 
-[node name="Hallway11" parent="World/RightBranch" instance=ExtResource( 11 )]
+[node name="Hallway11" parent="World/Structure/RightBranch" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 120, 0, 300 )
 
-[node name="Hallway12" parent="World/RightBranch" instance=ExtResource( 11 )]
+[node name="Hallway12" parent="World/Structure/RightBranch" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 156, 0, 300 )
 
-[node name="1Way" parent="World/RightBranch" instance=ExtResource( 5 )]
+[node name="1Way" parent="World/Structure/RightBranch" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 168, 0, 348 )
 
-[node name="Center" type="Spatial" parent="World"]
+[node name="Center" type="Spatial" parent="World/Structure"]
 
-[node name="2Way_Ac" parent="World/Center" instance=ExtResource( 10 )]
+[node name="2Way_Ac" parent="World/Structure/Center" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 126 )
 
-[node name="Hallway" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 48 )
 
-[node name="Hallway2" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway2" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 204 )
 
-[node name="Hallway3" parent="World/Center" instance=ExtResource( 3 )]
+[node name="Hallway3" parent="World/Structure/Center" instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 18, 0, 240 )
 
-[node name="Hallway4" parent="World/Center" instance=ExtResource( 11 )]
+[node name="Hallway4" parent="World/Structure/Center" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, 252 )
 
-[node name="Hallway5" parent="World/Center" instance=ExtResource( 9 )]
+[node name="Hallway5" parent="World/Structure/Center" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 252 )
 
-[node name="2Way_Ac2" parent="World/Center" instance=ExtResource( 6 )]
+[node name="2Way_Ac2" parent="World/Structure/Center" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 396 )
 
-[node name="2Way_Ac3" parent="World/Center" instance=ExtResource( 6 )]
+[node name="2Way_Ac3" parent="World/Structure/Center" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, 300 )
 
-[node name="2Way_Ac4" parent="World/Center" instance=ExtResource( 6 )]
+[node name="2Way_Ac4" parent="World/Structure/Center" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 300 )
 
-[node name="Hallway6" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway6" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 348 )
 
-[node name="Hallway7" parent="World/Center" instance=ExtResource( 11 )]
+[node name="Hallway7" parent="World/Structure/Center" instance=ExtResource( 11 )]
 transform = Transform( -1, 3.82137e-15, 8.74228e-08, -3.82137e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 54, 0, 444 )
 
-[node name="Hallway8" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway8" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 18, 0, 456 )
 
-[node name="Hallway14" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway14" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -102, 0, 552 )
 
-[node name="3Way" parent="World/Center" instance=ExtResource( 8 )]
+[node name="3Way" parent="World/Structure/Center" instance=ExtResource( 8 )]
 transform = Transform( -1, 3.82137e-15, 8.74228e-08, -3.82137e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, -54, 0, 456 )
 
-[node name="Hallway9" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway9" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, 348 )
 
-[node name="Hallway10" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway10" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, 384 )
 
-[node name="Hallway11" parent="World/Center" instance=ExtResource( 2 )]
+[node name="Hallway11" parent="World/Structure/Center" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, 414 )
 
-[node name="Hallway12" parent="World/Center" instance=ExtResource( 2 )]
+[node name="Hallway12" parent="World/Structure/Center" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -12, 0, 456 )
 
-[node name="Hallway13" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway13" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, 504 )
 
-[node name="Hallway17" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway17" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 600 )
 
-[node name="3Way2" parent="World/Center" instance=ExtResource( 8 )]
+[node name="3Way2" parent="World/Structure/Center" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -54, 0, 552 )
 
-[node name="2Way-Ad" parent="World/Center" instance=ExtResource( 7 )]
+[node name="2Way-Ad" parent="World/Structure/Center" instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -150, 0, 552 )
 
-[node name="Hallway16" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway16" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -6, 0, 552 )
 
-[node name="Hallway19" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway19" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -6, 0, 636 )
 
-[node name="2Way-Ad2" parent="World/Center" instance=ExtResource( 7 )]
+[node name="2Way-Ad2" parent="World/Structure/Center" instance=ExtResource( 7 )]
 transform = Transform( 1.31134e-07, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 1.31134e-07, 42, 0, 552 )
 
-[node name="Hallway15" parent="World/Center" instance=ExtResource( 12 )]
+[node name="Hallway15" parent="World/Structure/Center" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 0, 504 )
 
-[node name="1Way" parent="World/Center" instance=ExtResource( 5 )]
+[node name="1Way" parent="World/Structure/Center" instance=ExtResource( 5 )]
 transform = Transform( -1, 3.82137e-15, 8.74228e-08, -3.82137e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, -150, 0, 456 )
 
-[node name="1Way2" parent="World/Center" instance=ExtResource( 5 )]
+[node name="1Way2" parent="World/Structure/Center" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -54, 0, 636 )
 
-[node name="Hallway18" parent="World/Center" instance=ExtResource( 9 )]
+[node name="Hallway18" parent="World/Structure/Center" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 30, 0, 636 )
 
-[node name="LockedDoor1" parent="World" instance=ExtResource( 13 )]
+[node name="LockedDoor1" parent="World/Structure" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 29 )
 door_name = "1"
 
-[node name="LockedDoor2" parent="World" instance=ExtResource( 13 )]
+[node name="LockedDoor2" parent="World/Structure" instance=ExtResource( 13 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29, 1, 0 )
 door_name = "2"
 
-[node name="LockedDoor3" parent="World" instance=ExtResource( 13 )]
+[node name="LockedDoor3" parent="World/Structure" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29 )
 door_name = "3"
 
@@ -243,7 +250,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 168, 2, 350 )
 key_name = "1"
 
 [node name="Key2" parent="World" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 4, 290 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -194.456, 4, 285.55 )
 key_name = "2"
 
 [node name="Key3" parent="World" instance=ExtResource( 14 )]
@@ -260,9 +267,696 @@ spot_range = 9.985
 spot_angle = 160.99
 spot_angle_attenuation = 0.732044
 
-[connection signal="transmit_keys" from="Player_Character" to="World/LockedDoor1" method="_on_Player_Character_transmit_keys"]
-[connection signal="transmit_keys" from="Player_Character" to="World/LockedDoor2" method="_on_Player_Character_transmit_keys"]
-[connection signal="transmit_keys" from="Player_Character" to="World/LockedDoor3" method="_on_Player_Character_transmit_keys"]
+[node name="Interactables" type="Spatial" parent="World"]
+
+[node name="Plate" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -193.24, 1.33276, 2.7579 )
+
+[node name="Plate2" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -193.24, 1.87048, 2.7579 )
+
+[node name="Plate3" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -193.24, 2.5439, 2.36415 )
+
+[node name="Plate4" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -193.24, 3.05874, 2.7579 )
+
+[node name="Plate5" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -193.523, 3.68391, 2.74703 )
+
+[node name="Plate6" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -193.304, 4.44069, 2.74703 )
+
+[node name="Plate7" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -193.175, 5.02071, 2.37502 )
+
+[node name="Plate17" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 1.33276, 89.4325 )
+
+[node name="Plate18" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 1.87048, 89.4325 )
+
+[node name="Plate19" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 2.5439, 89.0388 )
+
+[node name="Plate20" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 3.05874, 89.4325 )
+
+[node name="Plate21" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 0.801483, 3.68391, 89.4216 )
+
+[node name="Plate22" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 1.02046, 4.44069, 89.4216 )
+
+[node name="Plate23" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 1.14951, 5.02071, 89.0496 )
+
+[node name="Plate24" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 5.83485, 89.4325 )
+
+[node name="Plate83" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 6.37257, 89.4325 )
+
+[node name="Plate84" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 7.04599, 89.0388 )
+
+[node name="Plate85" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 7.56084, 89.4325 )
+
+[node name="Plate86" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 0.801483, 8.186, 89.4216 )
+
+[node name="Plate87" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 1.02046, 8.94278, 89.4216 )
+
+[node name="Plate88" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 1.14951, 9.5228, 89.0496 )
+
+[node name="Plate89" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 10.0809, 89.4325 )
+
+[node name="Plate90" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 10.6186, 89.4325 )
+
+[node name="Plate91" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 11.292, 89.0388 )
+
+[node name="Plate92" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08499, 11.8069, 89.4325 )
+
+[node name="Plate93" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 0.801483, 12.432, 89.4216 )
+
+[node name="Plate94" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 1.02046, 13.1888, 89.4216 )
+
+[node name="Plate95" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 1.14951, 13.7688, 89.0496 )
+
+[node name="Plate96" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 1.33276, 89.4325 )
+
+[node name="Plate97" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 1.87048, 89.4325 )
+
+[node name="Plate98" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 2.5439, 89.0388 )
+
+[node name="Plate99" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 3.05874, 89.4325 )
+
+[node name="Plate100" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -14.245, 3.68391, 89.4216 )
+
+[node name="Plate101" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -14.026, 4.44069, 89.4216 )
+
+[node name="Plate102" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -13.897, 5.02071, 89.0496 )
+
+[node name="Plate103" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 5.83485, 89.4325 )
+
+[node name="Plate104" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 6.37257, 89.4325 )
+
+[node name="Plate105" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 7.04599, 89.0388 )
+
+[node name="Plate106" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 7.56084, 89.4325 )
+
+[node name="Plate107" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -14.245, 8.186, 89.4216 )
+
+[node name="Plate108" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -14.026, 8.94278, 89.4216 )
+
+[node name="Plate109" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -13.897, 9.5228, 89.0496 )
+
+[node name="Plate110" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 10.0809, 89.4325 )
+
+[node name="Plate111" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 10.6186, 89.4325 )
+
+[node name="Plate112" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 11.292, 89.0388 )
+
+[node name="Plate113" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9615, 11.8069, 89.4325 )
+
+[node name="Plate114" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -14.245, 12.432, 89.4216 )
+
+[node name="Plate115" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -14.026, 13.1888, 89.4216 )
+
+[node name="Plate116" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -13.897, 13.7688, 89.0496 )
+
+[node name="Plate117" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 1.33276, 100.945 )
+
+[node name="Plate118" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 1.87048, 100.945 )
+
+[node name="Plate119" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 2.5439, 100.551 )
+
+[node name="Plate120" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 3.05874, 100.945 )
+
+[node name="Plate121" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.5026, 3.68391, 100.934 )
+
+[node name="Plate122" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.7216, 4.44069, 100.934 )
+
+[node name="Plate123" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.8506, 5.02071, 100.562 )
+
+[node name="Plate124" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 5.83485, 100.945 )
+
+[node name="Plate125" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 6.37257, 100.945 )
+
+[node name="Plate126" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 7.04599, 100.551 )
+
+[node name="Plate127" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 7.56084, 100.945 )
+
+[node name="Plate128" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.5026, 8.186, 100.934 )
+
+[node name="Plate129" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.7216, 8.94278, 100.934 )
+
+[node name="Plate130" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.8506, 9.5228, 100.562 )
+
+[node name="Plate131" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 10.0809, 100.945 )
+
+[node name="Plate132" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 10.6186, 100.945 )
+
+[node name="Plate133" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 11.292, 100.551 )
+
+[node name="Plate134" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7861, 11.8069, 100.945 )
+
+[node name="Plate135" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.5026, 12.432, 100.934 )
+
+[node name="Plate136" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.7216, 13.1888, 100.934 )
+
+[node name="Plate137" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 14.8506, 13.7688, 100.562 )
+
+[node name="Plate138" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 1.33276, 137.064 )
+
+[node name="Plate139" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 1.87048, 137.064 )
+
+[node name="Plate140" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 2.5439, 136.67 )
+
+[node name="Plate141" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 3.05874, 137.064 )
+
+[node name="Plate142" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -9.20058, 3.68391, 137.053 )
+
+[node name="Plate143" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -8.9816, 4.44069, 137.053 )
+
+[node name="Plate144" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -8.85256, 5.02071, 136.681 )
+
+[node name="Plate145" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 5.83485, 137.064 )
+
+[node name="Plate146" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 6.37257, 137.064 )
+
+[node name="Plate147" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 7.04599, 136.67 )
+
+[node name="Plate148" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 7.56084, 137.064 )
+
+[node name="Plate149" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -9.20058, 8.186, 137.053 )
+
+[node name="Plate150" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -8.9816, 8.94278, 137.053 )
+
+[node name="Plate151" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -8.85256, 9.5228, 136.681 )
+
+[node name="Plate152" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 10.0809, 137.064 )
+
+[node name="Plate153" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 10.6186, 137.064 )
+
+[node name="Plate154" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 11.292, 136.67 )
+
+[node name="Plate155" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91707, 11.8069, 137.064 )
+
+[node name="Plate156" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -9.20058, 12.432, 137.053 )
+
+[node name="Plate157" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -8.9816, 13.1888, 137.053 )
+
+[node name="Plate158" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -8.85256, 13.7688, 136.681 )
+
+[node name="Plate159" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 1.33276, 156.517 )
+
+[node name="Plate160" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 1.87048, 156.517 )
+
+[node name="Plate161" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 2.5439, 156.123 )
+
+[node name="Plate162" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 3.05874, 156.517 )
+
+[node name="Plate163" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.4306, 3.68391, 156.506 )
+
+[node name="Plate164" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.6496, 4.44069, 156.506 )
+
+[node name="Plate165" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.7786, 5.02071, 156.134 )
+
+[node name="Plate166" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 5.83485, 156.517 )
+
+[node name="Plate167" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 6.37257, 156.517 )
+
+[node name="Plate168" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 7.04599, 156.123 )
+
+[node name="Plate169" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 7.56084, 156.517 )
+
+[node name="Plate170" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.4306, 8.186, 156.506 )
+
+[node name="Plate171" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.6496, 8.94278, 156.506 )
+
+[node name="Plate172" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.7786, 9.5228, 156.134 )
+
+[node name="Plate173" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 10.0809, 156.517 )
+
+[node name="Plate174" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 10.6186, 156.517 )
+
+[node name="Plate175" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 11.292, 156.123 )
+
+[node name="Plate176" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7141, 11.8069, 156.517 )
+
+[node name="Plate177" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.4306, 12.432, 156.506 )
+
+[node name="Plate178" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.6496, 13.1888, 156.506 )
+
+[node name="Plate179" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 15.7786, 13.7688, 156.134 )
+
+[node name="Plate180" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 1.33276, 158.491 )
+
+[node name="Plate181" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 1.87048, 158.491 )
+
+[node name="Plate201" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3562, 1.87048, 634.232 )
+
+[node name="Plate202" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7899, 1.87048, 638.104 )
+
+[node name="Plate203" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1999, 1.87048, 628.726 )
+
+[node name="Plate204" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1999, 1.87048, 650.878 )
+
+[node name="Plate205" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.2502, 1.87048, 650.878 )
+
+[node name="Plate206" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.6928, 1.87048, 642.309 )
+
+[node name="Plate207" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2181, 1.87048, 537.664 )
+
+[node name="Plate208" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.1339, 1.87048, 555.58 )
+
+[node name="Plate209" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8592, 1.87048, 569.424 )
+
+[node name="Plate210" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.730055, 0, -0.683388, 0, 1, 0, 0.683388, 0, 0.730055, -48.2339, 1.87048, 435.871 )
+
+[node name="Plate211" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.730055, 0, -0.683388, 0, 1, 0, 0.683388, 0, 0.730055, -56.947, 1.87048, 477.353 )
+
+[node name="Plate212" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.730055, 0, -0.683388, 0, 1, 0, 0.683388, 0, 0.730055, -76.8636, 1.87048, 458.71 )
+
+[node name="Plate213" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.730055, 0, -0.683388, 0, 1, 0, 0.683388, 0, 0.730055, -62.9506, 1.87048, 443.846 )
+
+[node name="Plate214" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -162.629, 1.87048, 541.736 )
+
+[node name="Plate215" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -162.629, 1.87048, 553.951 )
+
+[node name="Plate216" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -135.755, 1.87048, 553.951 )
+
+[node name="Plate217" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -135.755, 1.87048, 459.893 )
+
+[node name="Plate218" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -166.7, 1.87048, 459.893 )
+
+[node name="Plate219" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -166.7, 1.87048, 440.755 )
+
+[node name="Plate220" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -154.485, 1.87048, 440.755 )
+
+[node name="Plate221" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -154.485, 1.87048, 472.923 )
+
+[node name="Plate222" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -154.485, 1.87048, 472.923 )
+
+[node name="Plate223" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.408, 1.87048, 304.992 )
+
+[node name="Plate224" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.4625, 1.87048, 304.992 )
+
+[node name="Plate225" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.4625, 1.87048, 285.855 )
+
+[node name="Plate226" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.6778, 1.87048, 285.855 )
+
+[node name="Plate227" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.6778, 1.87048, 318.022 )
+
+[node name="Plate182" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 2.5439, 158.097 )
+
+[node name="Plate183" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 3.05874, 158.491 )
+
+[node name="Plate184" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -16.0354, 3.68391, 158.48 )
+
+[node name="Plate185" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -15.8165, 4.44069, 158.48 )
+
+[node name="Plate186" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -15.6874, 5.02071, 158.108 )
+
+[node name="Plate187" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 5.83485, 158.491 )
+
+[node name="Plate188" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 6.37257, 158.491 )
+
+[node name="Plate189" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 7.04599, 158.097 )
+
+[node name="Plate190" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 7.56084, 158.491 )
+
+[node name="Plate191" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -16.0354, 8.186, 158.48 )
+
+[node name="Plate192" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -15.8165, 8.94278, 158.48 )
+
+[node name="Plate193" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -15.6874, 9.5228, 158.108 )
+
+[node name="Plate194" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 10.0809, 158.491 )
+
+[node name="Plate195" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 10.6186, 158.491 )
+
+[node name="Plate196" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 11.292, 158.097 )
+
+[node name="Plate197" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7519, 11.8069, 158.491 )
+
+[node name="Plate198" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -16.0354, 12.432, 158.48 )
+
+[node name="Plate199" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -15.8165, 13.1888, 158.48 )
+
+[node name="Plate200" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -15.6874, 13.7688, 158.108 )
+
+[node name="Plate8" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -193.304, 5.63478, 2.74703 )
+
+[node name="Plate9" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -177.531, 1.33276, -11.2057 )
+
+[node name="Plate10" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -177.531, 1.87048, -11.2057 )
+
+[node name="Plate11" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -177.531, 2.5439, -11.5994 )
+
+[node name="Plate12" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -177.531, 3.05874, -11.2057 )
+
+[node name="Plate13" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -177.814, 3.68391, -11.2166 )
+
+[node name="Plate14" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -177.595, 4.44069, -11.2166 )
+
+[node name="Plate15" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -177.466, 5.02071, -11.5886 )
+
+[node name="Plate16" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -177.595, 5.63478, -11.2166 )
+
+[node name="Plate25" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -206.505, 1.33276, 90.3794 )
+
+[node name="Plate26" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -206.505, 1.87048, 90.3794 )
+
+[node name="Plate27" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -206.505, 2.5439, 89.9857 )
+
+[node name="Plate28" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -206.505, 3.05874, 90.3794 )
+
+[node name="Plate29" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -206.789, 3.68391, 90.3686 )
+
+[node name="Plate30" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -206.57, 4.44069, 90.3686 )
+
+[node name="Plate31" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -206.441, 5.02071, 89.9966 )
+
+[node name="Plate32" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -206.57, 5.63478, 90.3686 )
+
+[node name="Plate33" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.625, 1.33276, 100.154 )
+
+[node name="Plate34" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.625, 1.87048, 100.154 )
+
+[node name="Plate35" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.625, 2.5439, 99.7602 )
+
+[node name="Plate36" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.625, 3.05874, 100.154 )
+
+[node name="Plate37" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -179.909, 3.68391, 100.143 )
+
+[node name="Plate38" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -179.69, 4.44069, 100.143 )
+
+[node name="Plate39" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -179.561, 5.02071, 99.7711 )
+
+[node name="Plate40" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -179.69, 5.63478, 100.143 )
+
+[node name="Plate41" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -197.429, 1.33276, 111.325 )
+
+[node name="Plate42" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -197.429, 1.87048, 111.325 )
+
+[node name="Plate43" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -197.429, 2.5439, 110.931 )
+
+[node name="Plate44" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -197.429, 3.05874, 111.325 )
+
+[node name="Plate45" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -197.712, 3.68391, 111.314 )
+
+[node name="Plate46" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -197.493, 4.44069, 111.314 )
+
+[node name="Plate47" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -197.364, 5.02071, 110.942 )
+
+[node name="Plate48" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -197.493, 5.63478, 111.314 )
+
+[node name="Plate57" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 141.287, 5.63478, 212.997 )
+
+[node name="Plate59" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 112.481, 5.63478, -14.1272 )
+
+[node name="Plate60" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 90.8769, 5.63478, -8.03362 )
+
+[node name="Plate61" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 96.4166, 5.63478, -16.897 )
+
+[node name="Plate62" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 103.618, 5.63478, 11.355 )
+
+[node name="Plate63" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 115.805, 5.63478, 6.36938 )
+
+[node name="Plate64" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 115.805, 5.63478, 19.6645 )
+
+[node name="Plate65" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 81.4596, 5.63478, 19.6645 )
+
+[node name="Plate66" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 81.4596, 5.63478, 19.6645 )
+
+[node name="Plate67" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 204.439, 5.63478, -14.1272 )
+
+[node name="Plate68" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 182.835, 5.63478, -8.03362 )
+
+[node name="Plate69" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 188.374, 5.63478, -16.897 )
+
+[node name="Plate70" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 195.576, 5.63478, -9.14156 )
+
+[node name="Plate71" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.961165, 0, -0.275973, 0, 1, 0, 0.275973, 0, 0.961165, 197.238, 5.63478, 6.36938 )
+
+[node name="Plate72" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 207.763, 5.63478, 19.6645 )
+
+[node name="Plate73" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 173.417, 5.63478, -3.60193 )
+
+[node name="Plate74" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 184.496, 5.63478, 19.6645 )
+
+[node name="Plate75" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.899786, 3.09086e-08, 0.436331, -3.33974e-08, 1, -1.96662e-09, -0.436331, -1.28028e-08, 0.899786, 88.0399, 5.63478, 75.9045 )
+
+[node name="Plate76" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.899786, 3.09086e-08, 0.436331, -3.33974e-08, 1, -1.96662e-09, -0.436331, -1.28028e-08, 0.899786, 77.072, 5.63479, 95.49 )
+
+[node name="Plate77" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.899786, 3.09086e-08, 0.436331, -3.33974e-08, 1, -1.96662e-09, -0.436331, -1.28028e-08, 0.899786, 174.435, 5.63479, 85.3055 )
+
+[node name="Plate78" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.899786, 3.09086e-08, 0.436331, -3.33974e-08, 1, -1.96662e-09, -0.436331, -1.28028e-08, 0.899786, 185.011, 5.63478, 85.6972 )
+
+[node name="Plate79" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.874789, 3.09086e-08, 0.484504, -3.32415e-08, 1, -3.77564e-09, -0.484504, -1.28028e-08, 0.874789, 197.154, 5.63478, 95.49 )
+
+[node name="Plate80" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.899786, 3.09086e-08, 0.436331, -3.33974e-08, 1, -1.96662e-09, -0.436331, -1.28028e-08, 0.899786, 213.998, 5.63478, 97.4486 )
+
+[node name="Plate81" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.899786, 3.09086e-08, 0.436331, -3.33974e-08, 1, -1.96662e-09, -0.436331, -1.28028e-08, 0.899786, 173.26, 5.63479, 105.283 )
+
+[node name="Plate82" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.899786, 3.09086e-08, 0.436331, -3.33974e-08, 1, -1.96662e-09, -0.436331, -1.28028e-08, 0.899786, 97.8326, 5.63478, 113.9 )
+
+[node name="Plate58" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, 159.828, 5.63478, 190.891 )
+
+[node name="Plate49" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -203.926, 1.33276, 274.582 )
+
+[node name="Plate50" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -203.926, 1.87048, 274.582 )
+
+[node name="Plate51" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -203.926, 2.5439, 274.188 )
+
+[node name="Plate52" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -203.926, 3.05874, 274.582 )
+
+[node name="Plate53" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -204.209, 3.68391, 274.571 )
+
+[node name="Plate54" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -203.99, 4.44069, 274.571 )
+
+[node name="Plate55" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -203.861, 5.02071, 274.199 )
+
+[node name="Plate56" parent="World/Interactables" instance=ExtResource( 16 )]
+transform = Transform( 0.944777, 0, -0.327713, 0, 1, 0, 0.327713, 0, 0.944777, -203.99, 5.63478, 274.571 )
+
+[connection signal="emit_noise" from="Player_Character" to="Enemy" method="_on_Player_Character_emit_noise"]
+[connection signal="transmit_keys" from="Player_Character" to="World/Structure/LockedDoor1" method="_on_Player_Character_transmit_keys"]
+[connection signal="transmit_keys" from="Player_Character" to="World/Structure/LockedDoor2" method="_on_Player_Character_transmit_keys"]
+[connection signal="transmit_keys" from="Player_Character" to="World/Structure/LockedDoor3" method="_on_Player_Character_transmit_keys"]
+[connection signal="candle_change" from="Enemy" to="Player_Character" method="_on_Enemy_candle_change"]
+[connection signal="move_monster" from="World/Structure/LockedDoor1" to="Enemy" method="_on_LockedDoor1_move_monster"]
+[connection signal="move_monster" from="World/Structure/LockedDoor2" to="Enemy" method="_on_LockedDoor2_move_monster"]
 [connection signal="key_collected" from="World/Key1" to="Player_Character" method="_on_Key_key_collected"]
 [connection signal="key_collected" from="World/Key2" to="Player_Character" method="_on_Key_key_collected"]
 [connection signal="key_collected" from="World/Key3" to="Player_Character" method="_on_Key_key_collected"]
